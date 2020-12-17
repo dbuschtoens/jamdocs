@@ -1,17 +1,38 @@
 backend:
   name: git-gateway
-  branch: branch-b
+  branch: master
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "docs"
-    label: "Docs"
-    folder: "Docs"
+  - name: "Questionaires"
+    label: "Questionaires"
+    folder: "Questionaires"
+    extension: "yaml"
     create: true
-    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "ID", name: "id", widget: "string"}
+      - label: Sections
+        name: sections
+        widget: "object"
+        fields:
+          - {label: "Section", name: "section", widget: "string"}
+          - {label: "Scopes", name: "scopes", widget: "list", field: {label: Scope, name: scope, widget: string}}
+          - {label: "Darapgraph", name: "paragraph", widget: "text"}
+          - label: Questions
+            name: question
+            widget: "list"
+            types:
+              - label: Text
+                name: textQuestion
+                widget: object
+                fields:
+                  - {label: "Question", name: "textQuestion", widget: "text"}
+                  - {label: "Only If", name: "onlyIf", widget: "text"}
+              - label: Number
+                name: numberQuestion
+                widget: object
+                fields:
+                  - {label: "Question", name: "numberQuestion", widget: "text"}
+                  - {label: "Only If", name: "onlyIf", widget: "text"}
