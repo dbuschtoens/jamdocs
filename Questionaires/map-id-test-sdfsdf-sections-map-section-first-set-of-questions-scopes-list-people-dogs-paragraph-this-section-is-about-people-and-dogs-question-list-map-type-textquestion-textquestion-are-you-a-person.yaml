@@ -1,0 +1,17 @@
+id: test-sdfsdf
+sections:
+  section: First set of questions
+  scopes:
+    - people
+    - dogs
+  paragraph: This section is about people and dogs
+  question:
+    - type: textQuestion
+      textQuestion: Are you a person?
+      onlyIf: required
+    - type: textQuestion
+      textQuestion: Are you a Dog?
+      onlyIf: Dog
+    - type: numberQuestion
+      numberQuestion: How old are you?
+      onlyIf: required
